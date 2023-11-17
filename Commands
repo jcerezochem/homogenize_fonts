@@ -1,0 +1,5 @@
+for file in *agr; do python ./homogenize_fonts.py $file 12 8 1.0; done
+for file in *agr; do xmgrace $file -pexec 'DEVICE "PostScript" FONT off' -hardcopy; done
+for file in *ps; do ./ps2pdf_cst.sh $file; rm $file; done
+for file in figure*pdf; do pdfcrop $file $file; done
+pdflatex test.tex
